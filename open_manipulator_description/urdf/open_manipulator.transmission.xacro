@@ -40,9 +40,12 @@
   <xacro:SimpleTransmissionPosition n="4" joint="joint4" />
 
   <!-- Transmission 5 -->
-  <xacro:SimpleTransmissionEffort n="5" joint="gripper" />
+  <xacro:SimpleTransmissionPosition n="5" joint="joint5" />
 
   <!-- Transmission 6 -->
-  <xacro:SimpleTransmissionEffort n="6" joint="gripper_sub" />
+  <xacro:SimpleTransmissionPosition n="6" joint="joint6" />
+
+  <!-- Transmission 7 -->
+  <xacro:SimpleTransmissionPosition n="7" joint="joint7" />
 
 </robot>

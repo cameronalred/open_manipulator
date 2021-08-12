@@ -32,11 +32,14 @@
   <!-- Link5 -->
   <RefLink ref="link5"/>
 
-  <!-- gripper_link -->
-  <RefLink ref="gripper_link"/>
+  <!-- Link6 -->
+  <RefLink ref="link6"/>
 
-  <!-- gripper_link_sub -->
-  <RefLink ref="gripper_link_sub"/>
+  <!-- Link7 -->
+  <RefLink ref="link7"/>
+
+  <!-- Link8 -->
+  <RefLink ref="link8"/>
 
   <!-- end effector link -->
   <gazebo reference="end_effector_link">
@@ -49,16 +52,6 @@
       <controlPeriod>0.001</controlPeriod>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
       <legacyModeNS>true</legacyModeNS>
-    </plugin>
-  </gazebo>
-
-  <gazebo>
-    <!-- loading plugin: mimic joints works in gazebo now -->
-    <plugin name="gazebo_gripper_ros_control" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
-      <joint>gripper</joint>
-      <mimicJoint>gripper_sub</mimicJoint>
-      <multiplier>1.0</multiplier>
-      <offset>0.0</offset>
     </plugin>
   </gazebo>
 

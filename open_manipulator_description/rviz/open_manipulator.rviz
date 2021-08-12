@@ -57,21 +57,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        end_effector_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        grip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        grip_link_sub:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         link1:
           Alpha: 1
           Show Axes: false
@@ -94,6 +79,16 @@ Visualization Manager:
           Value: true
         link5:
           Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+	link7:
+	  Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
@@ -112,12 +107,6 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        end_effector_link:
-          Value: true
-        grip_link:
-          Value: true
-        grip_link_sub:
-          Value: true
         link1:
           Value: true
         link2:
@@ -128,6 +117,10 @@ Visualization Manager:
           Value: true
         link5:
           Value: true
+        link6:
+          Value: true
+	      link7:
+	        Value: true
         world:
           Value: true
       Marker Scale: 0.300000012
@@ -142,12 +135,8 @@ Visualization Manager:
               link3:
                 link4:
                   link5:
-                    end_effector_link:
-                      {}
-                    grip_link:
-                      {}
-                    grip_link_sub:
-                      {}
+                    link6:
+                      link7:
       Update Interval: 0
       Value: true
   Enabled: true

@@ -57,12 +57,12 @@ void OpenManipulator::initOpenManipulator(bool using_actual_robot_state, STRING 
   addJoint("joint2",  // my name
             "joint1",  // parent name
             "joint3",  // child name
-            math::vector3(0.0, 0.0, 0.0595),                // relative position
+            math::vector3(0.019, 0.0, 0.0595),                // relative position
             math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
-            Y_AXIS,    // axis of rotation
+            X_AXIS,    // axis of rotation
             12,        // actuator id
-            M_PI_2,    // max joint limit (1.67 rad)
-            -2.05,     // min joint limit (-2.05 rad)
+            M_PI,    // max joint limit (pi rad)
+            -M_PI,     // min joint limit (-pi rad)
             1.0,       // coefficient
             1.3850917e-01,                                                        // mass
             math::inertiaMatrix(3.3055381e-04, 9.7940978e-08, -3.8505711e-05,
@@ -74,10 +74,27 @@ void OpenManipulator::initOpenManipulator(bool using_actual_robot_state, STRING 
   addJoint("joint3",  // my name
             "joint2",  // parent name
             "joint4",  // child name
-            math::vector3(0.024, 0.0, 0.128),               // relative position
+            math::vector3(0.0405, 0.0, 0.0),                // relative position
             math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
             Y_AXIS,    // axis of rotation
             13,        // actuator id
+            3.62,    // max joint limit (3.62 rad)
+            -0.505,     // min joint limit (-0.505 rad)
+            1.0,       // coefficient
+            1.3850917e-01,                                                        // mass
+            math::inertiaMatrix(3.3055381e-04, 9.7940978e-08, -3.8505711e-05,
+                                3.4290447e-04, -1.5717516e-06,
+                                6.0346498e-05),                                   // inertial tensor
+            math::vector3(1.0308393e-02, 3.7743363e-04, 1.0170197e-01)            // COM
+            );           
+
+  addJoint("joint4",  // my name
+            "joint3",  // parent name
+            "joint5",  // child name
+            math::vector3(0.024, 0.0, 0.128),               // relative position
+            math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
+            Y_AXIS,    // axis of rotation
+            14,        // actuator id
             1.53,      // max joint limit (1.53 rad)
             -M_PI_2,   // min joint limit (-1.67 rad)
             1.0,       // coefficient
@@ -88,13 +105,30 @@ void OpenManipulator::initOpenManipulator(bool using_actual_robot_state, STRING 
             math::vector3(9.0909590e-02, 3.8929816e-04, 2.2413279e-04)            // COM
             );
 
-  addJoint("joint4",  // my name
-            "joint3",  // parent name
-            "gripper", // child name
-            math::vector3(0.124, 0.0, 0.0),                 // relative position
+  addJoint("joint5",  // my name
+            "joint4",  // parent name
+            "joint6", // child name
+            math::vector3(0.12375, 0.0, 0.0),                 // relative position
+            math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
+            Z_AXIS,    // axis of rotation
+            15,        // actuator id
+            1.97,       // max joint limit (1.97 rad)
+            -1.97,      // min joint limit (-1.97 rad)
+            -1.0,       // coefficient
+            1.4327573e-01,                                                        // mass
+            math::inertiaMatrix(8.0870749e-05, 0.0, -1.0157896e-06,
+                                7.5980465e-05, 0.0,
+                                9.3127351e-05),                                   // inertial tensor
+            math::vector3(4.4206755e-02, 3.6839985e-07, 8.9142216e-03)            // COM
+            );
+
+  addJoint("joint6",  // my name
+            "joint5",  // parent name
+            "joint7",  // child name
+            math::vector3(0.069, 0.0, 0.0),                 // relative position
             math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
             Y_AXIS,    // axis of rotation
-            14,        // actuator id
+            16,        // actuator id
             2.0,       // max joint limit (2.0 rad)
             -1.8,      // min joint limit (-1.8 rad)
             1.0,       // coefficient
@@ -105,20 +139,22 @@ void OpenManipulator::initOpenManipulator(bool using_actual_robot_state, STRING 
             math::vector3(4.4206755e-02, 3.6839985e-07, 8.9142216e-03)            // COM
             );
 
-  addTool("gripper",  // my name
-          "joint4",   // parent name
-          math::vector3(0.126, 0.0, 0.0),                 // relative position
-          math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
-          15,         // actuator id
-          0.010,      // max gripper limit (0.01 m)
-          -0.010,     // min gripper limit (-0.01 m)
-          -0.015,     // Change unit from `meter` to `radian`
-          3.2218127e-02 * 2,                                                    // mass
-          math::inertiaMatrix(9.5568826e-06, 2.8424644e-06, -3.2829197e-10,
-                              2.2552871e-05, -3.1463634e-10,
-                              1.7605306e-05),                                   // inertial tensor
-          math::vector3(0.028 + 8.3720668e-03, 0.0246, -4.2836895e-07)          // COM
-          );
+  addJoint("joint7",  // my name
+            "joint6",  // parent name
+            "camera_joint", //child name
+            math::vector3(0.064, 0.0, 0.0),                 // relative position
+            math::convertRPYToRotationMatrix(0.0, 0.0, 0.0), // relative orientation
+            X_AXIS,    // axis of rotation
+            17,        // actuator id
+            M_PI,      // max joint limit (3.14 rad)
+            -M_PI,     // min joint limit (-3.14 rad)
+            1.0,       // coefficient
+            1.4327573e-01,                                                        // mass
+            math::inertiaMatrix(8.0870749e-05, 0.0, -1.0157896e-06,
+                                7.5980465e-05, 0.0,
+                                9.3127351e-05),                                   // inertial tensor
+            math::vector3(4.4206755e-02, 3.6839985e-07, 8.9142216e-03)            // COM
+            );
         
   /*****************************************************************************
   ** Initialize Kinematics 
@@ -145,37 +181,15 @@ void OpenManipulator::initOpenManipulator(bool using_actual_robot_state, STRING 
     jointDxlId.push_back(12);
     jointDxlId.push_back(13);
     jointDxlId.push_back(14);
+    jointDxlId.push_back(15);
+    jointDxlId.push_back(16);
+    jointDxlId.push_back(17);
     addJointActuator(JOINT_DYNAMIXEL, actuator_, jointDxlId, p_dxl_comm_arg);
 
     // Set joint actuator control mode
     STRING joint_dxl_mode_arg = "position_mode";
     void *p_joint_dxl_mode_arg = &joint_dxl_mode_arg;
     setJointActuatorMode(JOINT_DYNAMIXEL, jointDxlId, p_joint_dxl_mode_arg);
-
-
-    /*****************************************************************************
-    ** Initialize Tool Actuator
-    *****************************************************************************/
-    tool_ = new dynamixel::GripperDynamixel();
-
-    uint8_t gripperDxlId = 15;
-    addToolActuator(TOOL_DYNAMIXEL, tool_, gripperDxlId, p_dxl_comm_arg);
-
-    // Set gripper actuator control mode
-    STRING gripper_dxl_mode_arg = "current_based_position_mode";
-    void *p_gripper_dxl_mode_arg = &gripper_dxl_mode_arg;
-    setToolActuatorMode(TOOL_DYNAMIXEL, p_gripper_dxl_mode_arg);
-
-    // Set gripper actuator parameter
-    STRING gripper_dxl_opt_arg[2];
-    void *p_gripper_dxl_opt_arg = &gripper_dxl_opt_arg;
-    gripper_dxl_opt_arg[0] = "Profile_Acceleration";
-    gripper_dxl_opt_arg[1] = "20";
-    setToolActuatorMode(TOOL_DYNAMIXEL, p_gripper_dxl_opt_arg);
-
-    gripper_dxl_opt_arg[0] = "Profile_Velocity";
-    gripper_dxl_opt_arg[1] = "200";
-    setToolActuatorMode(TOOL_DYNAMIXEL, p_gripper_dxl_opt_arg);
 
     // Enable All Actuators 
     enableAllActuator();
